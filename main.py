@@ -1,20 +1,9 @@
 from operator import truediv
 from os import system
-
-def accountExist() -> bool:
-    list = []
-    with open('./BDD/bankAccount.txt', 'r', encoding='utf-8') as f:
-        for line in f:
-            list.append(str(line))
-    if list == []:
-        print(list)
-        return False
-    else:
-        print(list)
-        return True
-
+from bankAccount import bankAccount
 
 def run():
+    system("cls")
     print("Bienvenido al Banco de Guatemala")
     print("1.) Manejo de Cuentas Personales:")
     print("2.) Cuentas de Terceros:")
@@ -26,11 +15,14 @@ def run():
     
     if option == 1:
         system("cls")
-        if accountExist() == True:
-            print("Cuenta Existe")
+        if bankAccount.accountExist() == True: #Comprueba si hay una Cuenta de Banco
+            bankAccount.createAccount()
         else:
-            print("Cuenta no Existe")
-
+            print("No existe ninguna cuenta, desea crear una?: Si:1 No:0 ")
+            op = int(input("Seleccione: "))
+            if op == 1:
+                bankAccount.createAccount()
+        run()
 
 
 if __name__ == '__main__':
