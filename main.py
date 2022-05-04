@@ -1,5 +1,5 @@
 from operator import truediv
-from os import system
+from os import system, listdir
 from bankAccount import bankAccount
 
 def run():
@@ -12,6 +12,7 @@ def run():
     print("5.) Realizar Retiro:")
     print("")
     option: int = int(input("Seleecione una Opcion: "))
+
     
     if option == 1:
         system("cls")
@@ -22,7 +23,6 @@ def run():
             op = int(input("Seleccione: "))
             if op == 1:
                 bankAccount.createAccount()
-        run()
 
 
 if __name__ == '__main__':
